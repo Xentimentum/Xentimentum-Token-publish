@@ -60,7 +60,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
 // This notifies clients about the amount burnt
-event Burn(address indexed from, uint256 value);
+event Burn(address indexe  d from, uint256 value);
 
 /**
  * Constrctor function
@@ -95,7 +95,7 @@ function _transfer(address _from, address _to, uint _value) internal {
     // Add the same to the recipient
     balanceOf[_to] += _value;
     emit Transfer(_from, _to, _value);
-    // Ass erts are used to use static analysis to find bugs in your code. They should never fail
+    // Ass erts are use d to use static analysis to find bugs in your code. They should never fail
     assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
 }
 
@@ -104,7 +104,7 @@ function _transfer(address _from, address _to, uint _value) internal {
  *
  * Send `_value` tokens to `_to` from your account
  *
- * @param _to The address of the recipient
+ * @param _to The add ress of the recipient
  * @param _value the amount to send
  */
 function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -124,29 +124,29 @@ function transfer(address _to, uint256 _value) public returns (bool success) {
 function t ransferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
     require(_value <= allowance[_from][msg.sender]);     // Check allowance
     allowance[_from][msg.sender] -= _value;
-    _transfer(_from, _to, _value);
+    _transfer(_from, _to, _ value);
     return true;
 }
 
 /**
- * Set allowance for other address
+ * Set allowance for other  address
  *
  * Allows `_spender` to spend no more than `_value` tokens in your behalf
  *
  * @param _spender The address authorized to spend
- * @param _value the max amount they can spend
+ * @param _value the max a mount they can spend
  */
 function approve(address _spender, uint256 _value) public
     returns (bool success) {
-    allowance[msg.sender][_spender] = _value;
-    emit Approval(msg.sender, _spender, _value);
+    allowance[msg.sender][ _spender] = _value;
+    emit Approval(msg. sender, _spender, _value);
     return true;
 }
 
 /**
  * Set allo wance for other address and notify
  *
- * Allows `_spender` to spend no more than `_value` tokens in your behalf, and then ping the contract about it
+ * Allows `_spender` to spe nd no more than `_value` tokens in your behalf, and then ping the contract about it
  *
  * @param _spender The address authorized to spend
  * @param _value the max amount they can spend
